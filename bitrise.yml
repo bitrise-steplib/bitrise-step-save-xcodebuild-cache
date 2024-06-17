@@ -9,6 +9,15 @@ workflows:
         - skip_go_checks: "yes"
         - workflow: lint
 
+  audit-this-step:
+    steps:
+    - script:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            stepman audit --step-yml ./step.yml
+
   e2e:
     steps:
     - git::https://github.com/bitrise-steplib/steps-check.git:

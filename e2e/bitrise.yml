@@ -36,15 +36,6 @@ workflows:
         inputs:
         - path: ./_tmp
     - script@1:
-        title: make dependencies
-        inputs:
-        - content: |
-            #!/usr/bin/env bash
-            set -ex
-            set -o pipefail
-
-            make dependencies
-    - script@1:
         title: Build
         inputs:
         - content: |-

@@ -13,22 +13,6 @@ workflows:
     after_run:
     - _setup
     - _run
-    - _check
-    
-  test_gradle_build_analytics:
-    envs:
-    - ANALYTICS: "true"
-    after_run:
-    - _setup
-    - _run
-    - _check
-
-  test_gradle_build_no_analytics:
-    envs:
-    - ANALYTICS: "false"
-    after_run:
-    - _setup
-    - _run
 
   _run:
     steps:

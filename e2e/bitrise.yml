@@ -8,8 +8,6 @@ app:
 
 workflows:
   test_xcode_build_cache:
-    envs:
-    - DERIVED_DATA_PATH: "$HOME/Library/Developer/Xcode/DerivedData"
     after_run:
     - _setup
     - _run
@@ -50,10 +48,10 @@ workflows:
         title: Build
         inputs:
         - content: |-
-            #!/usr/bin/env bash            
-            set -ex            
-            set -o pipefail          
+            #!/usr/bin/env bash
+            set -ex
+            set -o pipefail
 
             defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
-            xcodebuild build -destination 'platform=iOS Simulator,name=iPhone 11' -scheme Bitrise\ TODOs\ Sample CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO    
+            xcodebuild build -destination 'platform=iOS Simulator,name=iPhone 11' -scheme Bitrise\ TODOs\ Sample CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO

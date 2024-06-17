@@ -18,7 +18,7 @@ toolkit:
     entry_file: step.sh
 
 inputs:
-- project_root_path: "."
+- project_root_path: .
   opts:
     title: Project root path
     summary: Path to the root folder of the project to be built
@@ -28,13 +28,13 @@ inputs:
       When the cache is restored, the metadata of the files in this folder is restored as well. This ensures Xcode recognizes the cached DerivedData folder.
     is_required: false
 
-- derived_data_path: "$HOME/Library/Developer/Xcode/DerivedData"
+- derived_data_path: $HOME/Library/Developer/Xcode/DerivedData
   opts:
     title: DerivedData path
     summary: Path to the DerivedData folder used by the build
     description: |-
-      Path to the DerivedData folder used by the build. By default, this is set to the system DerivedData folder. 
-      
+      Path to the DerivedData folder used by the build. By default, this is set to the system DerivedData folder.
+
       If xcodebuild is executed with the `-derivedDataPath` flag, then this must be set to the same value.
       For example, if `xcodebuild -derivedData "~/DerivedData/MyProject"`` is used, then this must be set to `~/DerivedData/MyProject`.
     is_required: true

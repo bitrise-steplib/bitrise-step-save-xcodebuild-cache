@@ -1,0 +1,49 @@
+title: Save xcodebuild Bitrise Build Cache
+summary: Caches the DerivedData folder used by xcodebuild. Uses the Bitrise Build Cache infrastructure.
+description: |
+  This steps caches the DerivedData folder and the related metadata required to speed up subsequent builds. The cache is stored in the Bitrise Build Cache infrastructure.
+
+website: https://github.com/bitrise-steplib/bitrise-step-activate-gradle-remote-cache
+source_code_url: https://github.com/bitrise-steplib/bitrise-step-activate-gradle-remote-cache
+support_url: https://github.com/bitrise-steplib/bitrise-step-activate-gradle-remote-cache
+
+type_tags:
+- utility
+
+run_if: .IsCI
+is_skippable: true
+
+toolkit:
+  bash:
+    entry_file: step.sh
+
+inputs:
+- project_root_path: "."
+  opts:
+    title: Project root path
+    summary: Path to the root folder of the project to be built
+    description: |-
+      This needs to be set to the root folder of the project to be built. The step takes the metadata of the input files from this folder.
+
+      When the cache is restored, the metadata of the files in this folder is restored as well. This ensures Xcode recognizes the cached DerivedData folder.
+    is_required: false
+
+- derived_data_path: "$HOME/Library/Developer/Xcode/DerivedData"
+  opts:
+    title: DerivedData path
+    summary: Path to the DerivedData folder used by the build
+    description: |-
+      Path to the DerivedData folder used by the build. By default, this is set to the system DerivedData folder. 
+      
+      If xcodebuild is executed with the `-derivedDataPath` flag, then this must be set to the same value.
+      For example, if `xcodebuild -derivedData "~/DerivedData/MyProject"`` is used, then this must be set to `~/DerivedData/MyProject`.
+    is_required: true
+
+- verbose: "false"
+  opts:
+    title: Verbose logging
+    summary: Enable logging additional information for troubleshooting
+    is_required: true
+    value_options:
+    - "true"
+    - "false"

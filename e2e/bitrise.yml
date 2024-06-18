@@ -45,4 +45,4 @@ workflows:
 
             defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
-            xcodebuild build -destination 'platform=iOS Simulator,name=iPhone 11' -scheme Bitrise\ TODOs\ Sample CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO
+            xcodebuild build -destination 'platform=iOS Simulator' -scheme Bitrise\ TODOs\ Sample CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO

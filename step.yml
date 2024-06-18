@@ -3,9 +3,16 @@ summary: Caches the DerivedData folder used by xcodebuild. Uses the Bitrise Buil
 description: |
   This steps caches the DerivedData folder and the related metadata required to speed up subsequent builds. The cache is stored in the Bitrise Build Cache infrastructure.
 
-website: https://github.com/bitrise-steplib/bitrise-step-activate-gradle-remote-cache
-source_code_url: https://github.com/bitrise-steplib/bitrise-step-activate-gradle-remote-cache
-support_url: https://github.com/bitrise-steplib/bitrise-step-activate-gradle-remote-cache
+website: https://github.com/bitrise-steplib/bitrise-step-save-xcodebuild-cache
+source_code_url: https://github.com/bitrise-steplib/bitrise-step-save-xcodebuild-cache
+support_url: https://github.com/bitrise-steplib/bitrise-step-save-xcodebuild-cache
+
+project_type_tags:
+- ios
+- cordova
+- ionic
+- react-native
+- flutter
 
 type_tags:
 - utility
@@ -16,6 +23,10 @@ is_skippable: true
 toolkit:
   bash:
     entry_file: step.sh
+
+deps:
+  brew:
+  - name: zstd
 
 inputs:
 - project_root_path: .

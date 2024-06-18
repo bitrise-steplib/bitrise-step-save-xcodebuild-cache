@@ -13,6 +13,7 @@ If not specified otherwise, the complete system DerivedData folder (`$HOME/Libra
 modification time is the same, the step also collects and saves the modification time of the input files (project files includinf source code files) into a metadata file.
 
 NOTE: you need to have an activate Bitrise Build Cache Trial or Subscription for your workspace to use this step.
+
 </details>
 
 ## 🧩 Get started

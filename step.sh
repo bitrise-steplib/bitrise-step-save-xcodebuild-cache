@@ -31,10 +31,6 @@ set -x
 export BITRISE_BUILD_CACHE_CLI_VERSION="v0.15.0-alpha.8"
 curl --retry 5 -sSfL 'https://raw.githubusercontent.com/bitrise-io/bitrise-build-cache-cli/main/install/installer.sh' | sh -s -- -b /tmp/bin -d $BITRISE_BUILD_CACHE_CLI_VERSION
 
-if [ "$collect_metrics" != "true" ] && [ "$collect_metrics" != "false" ]; then
-  echo "Parsing inputs failed: Collect Gradle build metrics ($collect_metrics) is not a valid option."
-fi
-
 # the cli command without the -d flag
 cmd="/tmp/bin/bitrise-build-cache save-xcode-deriveddata --project-root $project_root_path --deriveddata-path $derived_data_path"
 

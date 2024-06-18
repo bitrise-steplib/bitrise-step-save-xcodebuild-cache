@@ -11,6 +11,7 @@ workflows:
     after_run:
     - _setup
     - _run
+    - _check
 
   _run:
     steps:
@@ -19,7 +20,19 @@ workflows:
         run_if: "true"
         is_skippable: false
         inputs: []
+  
+  _check:
+    steps:
+    - script:
+        title: Delete DerivedData
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex            
 
+            rm -rf $HOME/Library/Developer/Xcode/DerivedData
+
+            echo "TODO: restore cache (when step is available)"
   _setup:
     steps:
     - script:

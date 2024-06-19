@@ -32,12 +32,12 @@ inputs:
 - project_root_path: .
   opts:
     title: Project root path
-    summary: Path to the root folder of the project to be built
+    summary: Path to the root folder of the project containing the source code files of the build
     description: |-
-      This needs to be set to the root folder of the project to be built. The step takes the metadata of the input files from this folder.
+      This needs to be set to the root folder of the project containing the source code files of the build. The step takes the metadata of the input files from this folder.
 
       When the cache is restored, the metadata of the files in this folder is restored as well. This ensures Xcode recognizes the cached DerivedData folder.
-    is_required: false
+    is_required: true
 
 - derived_data_path: $HOME/Library/Developer/Xcode/DerivedData
   opts:
@@ -49,6 +49,15 @@ inputs:
       If xcodebuild is executed with the `-derivedDataPath` flag, then this must be set to the same value.
       For example, if `xcodebuild -derivedData "~/DerivedData/MyProject"`` is used, then this must be set to `~/DerivedData/MyProject`.
     is_required: true
+
+- cache_key: ""
+  opts:
+    title: Cache key
+    summary: The key used to store the cache archive
+    description: |-
+      The step stores the cache archive under this key in the Bitrise Build Cache. 
+      If not specified, the step uses the current git branch name as the key: `xcode-deriveddata-<branch-name>`.
+    is_required: false
 
 - verbose: "false"
   opts:

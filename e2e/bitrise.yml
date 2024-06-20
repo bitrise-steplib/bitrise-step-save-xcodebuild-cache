@@ -19,8 +19,10 @@ workflows:
         title: Execute step
         run_if: "true"
         is_skippable: false
-        inputs: []
-
+        inputs:
+        - cache_key: save-xcodebuild-e2e-test
+        - verbose: true
+        
   _check:
     steps:
     - script:
@@ -31,8 +33,13 @@ workflows:
             set -ex
 
             rm -rf $HOME/Library/Developer/Xcode/DerivedData
-
-            echo "TODO: restore cache (when step is available)"
+    - git::https://github.com/bitrise-steplib/bitrise-step-restore-xcodebuild-cache.git@prepare-release:
+        title: Restore cache
+        is_skippable: false
+        inputs:
+        - cache_key: save-xcodebuild-e2e-test
+        - verbose: true
+            
   _setup:
     steps:
     - script:

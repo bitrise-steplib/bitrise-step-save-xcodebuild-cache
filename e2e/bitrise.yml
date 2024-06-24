@@ -22,7 +22,7 @@ workflows:
         inputs:
         - cache_key: save-xcodebuild-e2e-test
         - verbose: true
-        
+
   _check:
     steps:
     - script:
@@ -39,7 +39,7 @@ workflows:
         inputs:
         - cache_key: save-xcodebuild-e2e-test
         - verbose: true
-            
+
   _setup:
     steps:
     - script:

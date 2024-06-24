@@ -29,8 +29,8 @@ You can also run this step directly with [Bitrise CLI](https://github.com/bitris
 
 | Key | Description | Flags | Default |
 | --- | --- | --- | --- |
-| `project_root_path` | The key used to store the cache archive | required | `.` |
-| `cache_key` | Path to the root folder of the project to be built |  |  |
+| `project_root_path` | Path to the root folder of the project to be built |  |  |
+| `cache_key` | The key used to store the cache archive | required | `.` |
 | `verbose` | Enable logging additional information for troubleshooting | required | `false` |
 </details>
 

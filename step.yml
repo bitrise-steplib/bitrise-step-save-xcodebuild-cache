@@ -55,8 +55,9 @@ inputs:
     title: Cache key
     summary: The key used to store the cache archive
     description: |-
-      The step stores the cache archive under this key in the Bitrise Build Cache. 
-      If not specified, the step uses the current git branch name as the key: `xcode-deriveddata-<branch-name>`.
+      The step stores the cache archive under this key in the Bitrise Build Cache.
+      If not specified, the step uses the Bitrise app's slug plus the current git branch name as the key: `xcode-deriveddata-<app-slug>-<branch-name>`.
+      Cache keys are shared among the apps of the same workspace so it's recommended to add the current app slug to avoid conflicts.
     is_required: false
 
 - verbose: "false"

@@ -33,7 +33,7 @@ workflows:
             set -ex
 
             rm -rf $HOME/Library/Developer/Xcode/DerivedData
-    - git::https://github.com/bitrise-steplib/bitrise-step-restore-xcodebuild-cache.git@prepare-release:
+    - git::https://github.com/bitrise-steplib/bitrise-step-restore-xcodebuild-cache.git@main:
         title: Restore cache
         is_skippable: false
         inputs:

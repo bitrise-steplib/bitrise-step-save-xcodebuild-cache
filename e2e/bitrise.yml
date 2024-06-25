@@ -66,6 +66,7 @@ workflows:
               echo "Cache metadata file exists"
             else
               echo "Cache metadata file does not exist"
+              exit 1
             fi
 
   _setup:

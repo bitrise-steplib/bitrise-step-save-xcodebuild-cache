@@ -39,6 +39,34 @@ workflows:
         inputs:
         - cache_key: save-xcodebuild-e2e-test
         - verbose: true
+    - script:
+        title: Check DerivedData folder and cache metada
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+
+            derived_data_path="$HOME/Library/Developer/Xcode/DerivedData"
+
+            if [ -d "$derived_data_path" ]; then
+              if [ "$(ls -A "$derived_data_path")" ]; then
+                echo "Directory exists and is not empty"
+              else
+                echo "DerivedData folder exists but empty"
+                exit 1
+              fi
+            else
+              echo "DerivedData folder does not exist"
+              exit 1
+            fi
+
+            metadata_path="dd-metadata.json"
+
+            if [ -f "$metadata_path" ]; then
+              echo "Cache metadata file exists"
+            else
+              echo "Cache metadata file does not exist"
+            fi
 
   _setup:
     steps:

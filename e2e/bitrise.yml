@@ -19,7 +19,9 @@ workflows:
         title: Execute step
         run_if: "true"
         is_skippable: false
-        inputs: []
+        inputs:
+        - cache_key: save-xcodebuild-e2e-test-$BITRISE_BUILD_SLUG
+        - verbose: true
 
   _check:
     steps:
@@ -31,8 +33,42 @@ workflows:
             set -ex
 
             rm -rf $HOME/Library/Developer/Xcode/DerivedData
+    - git::https://github.com/bitrise-steplib/bitrise-step-restore-xcodebuild-cache.git@prepare-release:
+        title: Restore cache
+        is_skippable: false
+        inputs:
+        - cache_key: save-xcodebuild-e2e-test-$BITRISE_BUILD_SLUG
+        - verbose: true
+    - script:
+        title: Check DerivedData folder and cache metada
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
 
-            echo "TODO: restore cache (when step is available)"
+            derived_data_path="$HOME/Library/Developer/Xcode/DerivedData"
+
+            if [ -d "$derived_data_path" ]; then
+              if [ "$(ls -A "$derived_data_path")" ]; then
+                echo "Directory exists and is not empty"
+              else
+                echo "DerivedData folder exists but empty"
+                exit 1
+              fi
+            else
+              echo "DerivedData folder does not exist"
+              exit 1
+            fi
+
+            metadata_path="dd-metadata.json"
+
+            if [ -f "$metadata_path" ]; then
+              echo "Cache metadata file exists"
+            else
+              echo "Cache metadata file does not exist"
+              exit 1
+            fi
+
   _setup:
     steps:
     - script:

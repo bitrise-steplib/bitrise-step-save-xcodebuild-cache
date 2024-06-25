@@ -10,7 +10,7 @@ Saves the DerivedData folder and the related metadata into Bitrise Build Cache t
 This steps caches the DerivedData folder and the related metadata required to speed up subsequent builds. The cache is stored in the Bitrise Build Cache infrastructure.
 
 If not specified otherwise, the complete system DerivedData folder (`$HOME/Library/Developer/Xcode/DerivedData`) is cached. As xcodebuild only reuses DerivedData if the input files'
-modification time is the same, the step also collects and saves the modification time of the input files (project files includinf source code files) into a metadata file.
+modification time is the same, the step also collects and saves the modification time of the input files (project files including source code files) into a metadata file.
 
 NOTE: you need to have an activate Bitrise Build Cache Trial or Subscription for your workspace to use this step.
 
@@ -29,8 +29,8 @@ You can also run this step directly with [Bitrise CLI](https://github.com/bitris
 
 | Key | Description | Flags | Default |
 | --- | --- | --- | --- |
-| `project_root_path` | Path to the root folder of the project to be built | required | `.` |
-| `derived_data_path` | Path to the DerivedData folder used by the build. This must be the same folder specified for the -derivedDataPath flag when running xcodebuild. | required | `$HOME/Library/Developer/Xcode/DerivedData` |
+| `project_root_path` | Path to the root folder of the project to be built |  |  |
+| `cache_key` | The key used to store the cache archive | required | `.` |
 | `verbose` | Enable logging additional information for troubleshooting | required | `false` |
 </details>
 

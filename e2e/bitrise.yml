@@ -21,6 +21,7 @@ workflows:
         is_skippable: false
         inputs:
         - verbose: true
+        - follow_symlinks: true
 
   _check:
     steps:

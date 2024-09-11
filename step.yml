@@ -54,6 +54,15 @@ inputs:
       For example, if `xcodebuild -derivedData "~/DerivedData/MyProject"`` is used, then this must be set to `~/DerivedData/MyProject`.
     is_required: true
 
+- follow_symlinks: "false"
+  opts:
+    title: Follow symlinks
+    summary: Follow symlinks in the project and DerivedData folders, and save the referenced files to the cache
+    is_required: true
+    value_options:
+    - "true"
+    - "false"
+
 - verbose: "false"
   opts:
     title: Verbose logging

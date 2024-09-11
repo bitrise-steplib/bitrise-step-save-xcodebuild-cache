@@ -60,8 +60,8 @@ inputs:
     summary: Follow symlinks in the project and DerivedData folders, and save the referenced files to the cache
     is_required: true
     value_options:
-      - "true"
-      - "false"
+    - "true"
+    - "false"
 
 - verbose: "false"
   opts:

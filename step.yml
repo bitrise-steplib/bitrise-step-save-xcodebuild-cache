@@ -69,8 +69,8 @@ inputs:
     summary: Skip SPM packages when saving the DerivedData cache. Enable if using Swift Package Manager. Complements the Save|Restore SPM cache steps.
     is_required: true
     value_options:
-      - "true"
-      - "false"
+    - "true"
+    - "false"
 
 - verbose: "false"
   opts:

@@ -42,4 +42,8 @@ if [ "$follow_symlinks" = "true" ]; then
   cmd="$cmd --follow-symlinks"
 fi
 
+if [ "$skip_spm" = "true" ]; then
+  cmd="$cmd --skip_spm"
+fi
+
 $cmd

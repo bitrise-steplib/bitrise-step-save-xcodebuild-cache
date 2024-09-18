@@ -28,7 +28,7 @@ echo "Bitrise Build Cache is activated in this workspace"
 set -x
 
 # download the Bitrise Build Cache CLI
-export BITRISE_BUILD_CACHE_CLI_VERSION=${BITRISE_BUILD_CACHE_CLI_VERSION:="v0.15.0-beta.9+xcode"}
+export BITRISE_BUILD_CACHE_CLI_VERSION=${BITRISE_BUILD_CACHE_CLI_VERSION:="v0.15.0-beta.10+xcode"}
 curl --retry 5 -sSfL 'https://raw.githubusercontent.com/bitrise-io/bitrise-build-cache-cli/main/install/installer.sh' | sh -s -- -b /tmp/bin -d $BITRISE_BUILD_CACHE_CLI_VERSION
 
 # the cli command without the -d flag
@@ -40,6 +40,10 @@ fi
 
 if [ "$follow_symlinks" = "true" ]; then
   cmd="$cmd --follow-symlinks"
+fi
+
+if [ "$skip_spm" = "true" ]; then
+  cmd="$cmd --skip-spm"
 fi
 
 $cmd
